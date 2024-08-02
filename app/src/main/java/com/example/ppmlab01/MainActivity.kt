@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -20,8 +21,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             PPMLab01Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    Bienvenida(
+                        name = "Roberto",
+                        modifier = Modifier.padding(innerPadding)
+                    )
+                    NombresPerro(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -31,17 +35,31 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Bienvenida(name: String, modifier: Modifier = Modifier) {
     Text(
-        text = "Hello $name!",
+        text = "Hola $name!",
         modifier = modifier
     )
+}
+
+@Composable
+fun NombresPerro(modifier: Modifier = Modifier) {
+    Column(modifier= modifier) {
+        Text("")
+        Text("Posibles candidatos a adoptar:")
+        Text("1. Mancha")
+        Text("2. Fresca")
+        Text("3. Cooper")
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     PPMLab01Theme {
-        Greeting("Android")
+        Column {
+            Bienvenida("Roberto")
+            NombresPerro()
+        }
     }
 }
